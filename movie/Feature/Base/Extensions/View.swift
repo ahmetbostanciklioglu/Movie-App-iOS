@@ -12,12 +12,17 @@ extension View {
         self.font(.custom(font.fontName, size: size))
     }
     
-    //Note main deprecated
     var screenWidth: CGFloat {
-        UIScreen.main.bounds.width
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return UIScreen.main.bounds.width
+        }
+        return windowScene.screen.bounds.width
     }
     
     var screenHeight: CGFloat {
-        UIScreen.main.bounds.height
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return UIScreen.main.bounds.height
+        }
+        return windowScene.screen.bounds.height
     }
 }

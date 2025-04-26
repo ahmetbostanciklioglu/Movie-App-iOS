@@ -84,7 +84,7 @@ struct DetailView: View {
         .preferredColorScheme(.dark)
         .background(.appBackground)
         .task {
-            await detailViewModel.fetchReviews()
+            detailViewModel.fetchReviews()
         }
     }
     

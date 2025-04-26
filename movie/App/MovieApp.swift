@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct movieApp: App {
+struct MovieApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()

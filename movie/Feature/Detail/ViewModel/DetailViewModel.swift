@@ -26,13 +26,17 @@ class DetailViewModel: ObservableObject {
     }
     
     //Fetch movie reviews
-    func fetchReviews() async {
-        do {
-            let response: ReviewResponse = try await movieService.fetchData(api: .init(endpoint: .movieReviews(movie.id)))
-            reviews = response.results
-        } catch {
-            print("Error: \(error)")
-            errorMessage = "Error: \(error)"
+    func fetchReviews() {
+        movieService.fetchData(api: .init(endpoint: .movieReviews(movie.id))) { [weak self] (result: Result<ReviewResponse, Error>) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    self?.reviews = response.results
+                case .failure(let error):
+                    print("Error: \(error)")
+                    self?.errorMessage = "Error: \(error)"
+                }
+            }
         }
     }
 }

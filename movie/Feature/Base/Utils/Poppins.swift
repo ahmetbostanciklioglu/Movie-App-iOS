@@ -8,7 +8,7 @@
 import Foundation
 
 enum Poppins: String {
- case black, blackItalic, bold, boldItalic, extraBold, extraBoldItalic, extraLight, extraLightItalic, italic, light, lightItalic, medium, mediumItalic, regular, semiBold, semiBoldItalic, thin, thinItalic
+ case black, blackItalic, bold, boldItalic, extraBold, extraBoldItalic, extraLight, extraLightItalic, italic, light, lightItalic, medium, mediumItalic, regular, semibold, semiboldItalic, thin, thinItalic
     
     var fontName: String {
         "Poppins-\(self.rawValue.capitalized)"

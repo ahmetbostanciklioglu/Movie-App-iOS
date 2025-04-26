@@ -58,7 +58,7 @@ struct HomeView: View {
                                     withAnimation(.easeInOut) {
                                         viewModel.selectedGenre = genre
                                         Task {
-                                            await viewModel.fetchMoviesForSelected()
+                                            viewModel.fetchMoviesForSelected()
                                         }
                                     }
                                 }
@@ -82,10 +82,10 @@ struct HomeView: View {
             DetailView(movie: movie)
         }
         .task {
-            await viewModel.fetchPopularMovies()
-            await viewModel.fetchTrendingMovies()
-            await viewModel.fetchGenre()
-            await viewModel.fetchMoviesForSelected()
+            viewModel.fetchPopularMovies()
+            viewModel.fetchTrendingMovies()
+            viewModel.fetchGenre()
+            viewModel.fetchMoviesForSelected()
         }
     }
 }

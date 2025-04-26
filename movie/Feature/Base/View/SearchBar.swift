@@ -9,8 +9,11 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var searchText: String
+    @FocusState private var isFocused: Bool
+    
     var body: some View {
         TextField("Search", text: $searchText)
+            .focused($isFocused)
             .overlay(
                 ZStack {
                     Image.CancelIcon
@@ -18,7 +21,7 @@ struct SearchBar: View {
                         .opacity(searchText.isEmpty ? 0.0 : 1.0)
                         .onTapGesture {
                             searchText = ""
-                            UIApplication.shared.endEditing()
+                            isFocused = false
                         }
                     Image.SearchIcon
                         .opacity(searchText.isEmpty ? 1.0 : 0.0)
